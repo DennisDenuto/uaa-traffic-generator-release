@@ -12,6 +12,7 @@ import (
 var _ = Describe("GetMeSender", func() {
 	var sender Sender
 
+	var api *uaa.API
 	var fakeUaaServer *ghttp.Server
 
 	BeforeEach(func() {
@@ -19,6 +20,10 @@ var _ = Describe("GetMeSender", func() {
 
 		fakeUaaServer = ghttp.NewServer()
 		fakeUaaServer.AllowUnhandledRequests = true
+
+		var err error
+		api, err = uaa.NewWithPasswordCredentials(fakeUaaServer.URL(), "", "", "", "", "", uaa.JSONWebToken, true)
+		Expect(err).NotTo(HaveOccurred())
 	})
 
 	AfterEach(func() {
@@ -40,7 +45,7 @@ var _ = Describe("GetMeSender", func() {
 		})
 
 		It("should send traffic to the UAA", func() {
-			sender.Send(fakeUaaServer.URL())
+			sender.Send(api)
 			Expect(fakeUaaServer.ReceivedRequests()).To(HaveLen(2))
 		})
 	})

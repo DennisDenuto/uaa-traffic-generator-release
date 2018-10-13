@@ -1,6 +1,7 @@
 package sender
 
-type Sender interface {
-	Send(target string)
-}
+import "github.com/cloudfoundry-community/go-uaa"
 
+type Sender interface {
+	Send(*uaa.API)
+}

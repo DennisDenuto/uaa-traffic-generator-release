@@ -1,17 +1,14 @@
 package sender
 
-import "github.com/cloudfoundry-community/go-uaa"
+import (
+	"github.com/cloudfoundry-community/go-uaa"
+)
 
 type GetMeSender struct {
 
 }
 
-func (GetMeSender) Send(target string) {
-	api, err := uaa.NewWithPasswordCredentials(target, "", "", "", "", "", uaa.JSONWebToken, true)
-	if err != nil {
-		panic(err)
-	}
-
+func (GetMeSender) Send(api *uaa.API) {
 	me, err := api.GetMe()
 	if err != nil {
 		panic(err)
