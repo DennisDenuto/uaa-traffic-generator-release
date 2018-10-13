@@ -2,19 +2,20 @@ package config
 
 type TrafficConfig struct {
 	UaaCommands []UaaCommand
+	Credentials Credentials
 }
 
 type UaaCommand struct {
 	Cmd string
-	Credentials Credentials
 }
 
 type Credentials struct {
+	Target    string
 	GrantType string
 
-	ClientId string
+	ClientId     string
 	ClientSecret string
 
-	Username string
+	Username     string
 	UserPassword string
 }
