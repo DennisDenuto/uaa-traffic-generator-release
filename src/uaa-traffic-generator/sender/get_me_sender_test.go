@@ -1,18 +1,22 @@
 package sender_test
 
 import (
+	. "uaa-traffic-generator/sender"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
-	"uaa-traffic-generator/sender"
-	"cloudfoundry-community/go-uaa/go-uaa"
+	"github.com/cloudfoundry-community/go-uaa"
 )
 
-var _ = Describe("Sender", func() {
+var _ = Describe("GetMeSender", func() {
+	var sender Sender
 
 	var fakeUaaServer *ghttp.Server
 
 	BeforeEach(func() {
+		sender = GetMeSender{}
+
 		fakeUaaServer = ghttp.NewServer()
 		fakeUaaServer.AllowUnhandledRequests = true
 	})
@@ -35,8 +39,7 @@ var _ = Describe("Sender", func() {
 			)
 		})
 
-		It("should request a token from the UAA", func() {
-
+		It("should send traffic to the UAA", func() {
 			sender.Send(fakeUaaServer.URL())
 			Expect(fakeUaaServer.ReceivedRequests()).To(HaveLen(2))
 		})
