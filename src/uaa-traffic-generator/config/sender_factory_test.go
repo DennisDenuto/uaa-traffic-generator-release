@@ -5,6 +5,7 @@ import (
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/onsi/ginkgo/extensions/table"
 	"uaa-traffic-generator/sender"
 )
 
@@ -14,17 +15,18 @@ var _ = Describe("SenderFactory", func() {
 		config = TrafficConfig{}
 	})
 
-	Context("given a config for sending 'GetMe' traffic", func() {
-		BeforeEach(func() {
+	table.DescribeTable("given a config for sending traffic",
+		func(configCmd string, expectedSender sender.Sender) {
 			config.UaaCommands = append(config.UaaCommands, UaaCommand{
-				Cmd: "GetMe",
+				Cmd: configCmd,
 			})
-		})
-		It("should build correct sender", func() {
+
 			senders := NewSenders(TrafficConfig{})
 
 			Expect(senders).To(HaveLen(1))
-			Expect(senders[0]).To(BeAssignableToTypeOf(sender.GetMeSender{}))
-		})
-	})
+			Expect(senders[0]).To(BeAssignableToTypeOf(expectedSender))
+		},
+
+		table.Entry("config with GetMe command", "GetMe", sender.GetMeSender{}),
+	)
 })

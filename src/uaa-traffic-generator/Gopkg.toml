@@ -24,6 +24,9 @@
 #   go-tests = true
 #   unused-packages = true
 
+[prune]
+  go-tests = true
+  unused-packages = true
 
 [[constraint]]
   name = "github.com/onsi/ginkgo"
@@ -33,10 +36,10 @@
   name = "github.com/onsi/gomega"
   version = "1.4.2"
 
-[prune]
-  go-tests = true
-  unused-packages = true
-
 [[constraint]]
   name = "github.com/cloudfoundry-community/go-uaa"
   version = "0.1.0"
+
+[[constraint]]
+  source = "https://github.com/fsnotify/fsnotify/archive/v1.4.7.tar.gz"
+  name = "gopkg.in/fsnotify.v1"
