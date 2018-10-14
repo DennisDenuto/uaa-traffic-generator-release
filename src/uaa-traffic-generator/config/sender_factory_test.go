@@ -28,7 +28,7 @@ var _ = Describe("SenderFactory", func() {
 	})
 
 	table.DescribeTable("given a config for sending traffic",
-		func(configCmd string, credentials Credentials, expectedSender sender.Sender) {
+		func(configCmd string, credentials Credentials, expectedSender sender.TrafficSender) {
 			config.UaaCommands = append(config.UaaCommands, UaaCommand{
 				Cmd: configCmd,
 			})

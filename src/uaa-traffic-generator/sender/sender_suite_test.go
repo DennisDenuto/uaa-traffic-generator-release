@@ -9,5 +9,5 @@ import (
 
 func TestSender(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Sender Suite")
+	RunSpecs(t, "TrafficSender Suite")
 }

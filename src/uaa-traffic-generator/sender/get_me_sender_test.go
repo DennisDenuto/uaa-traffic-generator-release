@@ -10,7 +10,7 @@ import (
 )
 
 var _ = Describe("GetMeSender", func() {
-	var sender Sender
+	var sender TrafficSender
 
 	var api *uaa.API
 	var fakeUaaServer *ghttp.Server

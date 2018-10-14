@@ -8,7 +8,7 @@ import (
 	go_uaa "github.com/cloudfoundry-community/go-uaa"
 )
 
-type FakeSender struct {
+type FakeTrafficSender struct {
 	SendStub        func(*go_uaa.API)
 	sendMutex       sync.RWMutex
 	sendArgsForCall []struct {
@@ -18,7 +18,7 @@ type FakeSender struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *FakeSender) Send(arg1 *go_uaa.API) {
+func (fake *FakeTrafficSender) Send(arg1 *go_uaa.API) {
 	fake.sendMutex.Lock()
 	fake.sendArgsForCall = append(fake.sendArgsForCall, struct {
 		arg1 *go_uaa.API
@@ -30,19 +30,19 @@ func (fake *FakeSender) Send(arg1 *go_uaa.API) {
 	}
 }
 
-func (fake *FakeSender) SendCallCount() int {
+func (fake *FakeTrafficSender) SendCallCount() int {
 	fake.sendMutex.RLock()
 	defer fake.sendMutex.RUnlock()
 	return len(fake.sendArgsForCall)
 }
 
-func (fake *FakeSender) SendArgsForCall(i int) *go_uaa.API {
+func (fake *FakeTrafficSender) SendArgsForCall(i int) *go_uaa.API {
 	fake.sendMutex.RLock()
 	defer fake.sendMutex.RUnlock()
 	return fake.sendArgsForCall[i].arg1
 }
 
-func (fake *FakeSender) Invocations() map[string][][]interface{} {
+func (fake *FakeTrafficSender) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.sendMutex.RLock()
@@ -50,7 +50,7 @@ func (fake *FakeSender) Invocations() map[string][][]interface{} {
 	return fake.invocations
 }
 
-func (fake *FakeSender) recordInvocation(key string, args []interface{}) {
+func (fake *FakeTrafficSender) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -62,4 +62,4 @@ func (fake *FakeSender) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ sender.Sender = new(FakeSender)
+var _ sender.TrafficSender = new(FakeTrafficSender)

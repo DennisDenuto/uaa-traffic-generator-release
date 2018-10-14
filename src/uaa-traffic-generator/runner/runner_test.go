@@ -10,12 +10,12 @@ import (
 )
 
 var _ = Describe("Runner", func() {
-	var senders []sender.Sender
-	var fakeSender *senderfakes.FakeSender
+	var senders []sender.TrafficSender
+	var fakeSender *senderfakes.FakeTrafficSender
 	var uaaApi *uaa.API
 
 	BeforeEach(func() {
-		fakeSender = &senderfakes.FakeSender{}
+		fakeSender = &senderfakes.FakeTrafficSender{}
 		senders = append(senders, fakeSender)
 		uaaApi = &uaa.API{}
 	})
