@@ -11,8 +11,15 @@ func NewSenders(config TrafficConfig) ([]sender.Sender, *uaa.API, error) {
 		return nil, nil, err
 	}
 
-	senders := []sender.Sender{
-		sender.GetMeSender{},
+	var senders []sender.Sender
+	for _, cmd := range config.UaaCommands {
+		switch cmd.Cmd {
+		case "GetMe":
+			senders = append(senders, sender.GetMeSender{})
+		case "ListAllUsers":
+			senders = append(senders, sender.ListAllUsersSender{})
+		}
+
 	}
 
 	return senders, api, nil

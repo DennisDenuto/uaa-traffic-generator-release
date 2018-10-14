@@ -44,7 +44,28 @@ var _ = Describe("SenderFactory", func() {
 		},
 
 		table.Entry("config with GetMe command", "GetMe", validUserCredentials, sender.GetMeSender{}),
+		table.Entry("config with ListAllUsers command", "ListAllUsers", validUserCredentials, sender.ListAllUsersSender{}),
 	)
+
+	Context("multiple commands are provided", func() {
+		BeforeEach(func() {
+			config.UaaCommands = append(config.UaaCommands,
+				UaaCommand{
+					Cmd: "GetMe",
+				},
+				UaaCommand{
+					Cmd: "ListAllUsers",
+				},
+			)
+
+		})
+		It("should create a new sender for each configured command", func() {
+			senders, _, err := NewSenders(config)
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(senders).To(HaveLen(2))
+		})
+	})
 
 	Context("Given an invalid target url", func() {
 		BeforeEach(func() {
