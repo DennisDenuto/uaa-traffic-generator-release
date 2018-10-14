@@ -1,5 +1,7 @@
 package config
 
+import "encoding/json"
+
 type TrafficConfig struct {
 	UaaCommands []UaaCommand
 	Credentials Credentials
@@ -18,4 +20,14 @@ type Credentials struct {
 
 	Username     string
 	UserPassword string
+}
+
+func NewConfig(jsonContents []byte) TrafficConfig {
+	var trafficConfig TrafficConfig
+	err := json.Unmarshal(jsonContents, &trafficConfig)
+	if err != nil {
+		panic(err)
+	}
+
+	return trafficConfig
 }
