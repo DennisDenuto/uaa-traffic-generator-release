@@ -2,6 +2,9 @@ package config
 
 import "encoding/json"
 
+const GetMeCmd = "GetMe"
+const ListAllUsersCmd = "ListAllUsers"
+
 type TrafficConfig struct {
 	UaaCommands []UaaCommand
 	Credentials Credentials
