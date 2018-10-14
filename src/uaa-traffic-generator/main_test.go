@@ -54,6 +54,9 @@ var _ = Describe("Main", func() {
 
 func generateTrafficConfigFile(fakeUaaServerUrl string) string {
 	trafficConfig := config.TrafficConfig{
+		UaaCommands: []config.UaaCommand{
+			{Cmd: "GetMe"},
+		},
 		Credentials: config.Credentials{
 			Target: fakeUaaServerUrl,
 		},
