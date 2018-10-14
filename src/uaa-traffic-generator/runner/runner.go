@@ -7,7 +7,7 @@ import (
 
 func RunAll(api *uaa.API, senders []sender.Sender) {
 
-	for _, sender := range senders{
-		sender.Send(api)
+	for _, s := range senders {
+		s.Send(api)
 	}
 }
