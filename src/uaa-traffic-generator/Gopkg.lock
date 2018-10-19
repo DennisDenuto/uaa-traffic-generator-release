@@ -21,6 +21,14 @@
   version = "v1.7.0"
 
 [[projects]]
+  branch = "release-branch.go1"
+  digest = "1:465d8246fc040bbc46a3274dda8152ff4a3b5aa06c9d787a2a3e7b22b4f7cbea"
+  name = "github.com/golang/go"
+  packages = ["src/pkg/flag"]
+  pruneopts = "UT"
+  revision = "08b97d4061dd75ceec1d44e4335183cd791c9306"
+
+[[projects]]
   digest = "1:97df918963298c287643883209a2c3f642e6593379f97ab400c2a2e219ab647d"
   name = "github.com/golang/protobuf"
   packages = ["proto"]
@@ -87,11 +95,13 @@
   version = "v1.6.0"
 
 [[projects]]
-  digest = "1:7167172a2391eaf512e8be8869b9295187c3f0d2576a11f09bca807a21374e56"
+  digest = "1:045599535b49038ada5bea0f82b78b3f9020836273243e10cc96d57b5abcffa9"
   name = "github.com/onsi/gomega"
   packages = [
     ".",
     "format",
+    "gbytes",
+    "gexec",
     "ghttp",
     "internal/assertion",
     "internal/asyncassertion",
@@ -220,9 +230,11 @@
   analyzer-version = 1
   input-imports = [
     "github.com/cloudfoundry-community/go-uaa",
+    "github.com/golang/go/src/pkg/flag",
     "github.com/onsi/ginkgo",
     "github.com/onsi/ginkgo/extensions/table",
     "github.com/onsi/gomega",
+    "github.com/onsi/gomega/gexec",
     "github.com/onsi/gomega/ghttp",
   ]
   solver-name = "gps-cdcl"
