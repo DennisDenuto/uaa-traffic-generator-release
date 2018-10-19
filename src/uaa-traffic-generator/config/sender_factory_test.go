@@ -7,6 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 	"github.com/onsi/ginkgo/extensions/table"
 	"uaa-traffic-generator/sender"
+	"github.com/cloudfoundry-community/go-uaa"
 )
 
 var _ = Describe("SenderFactory", func() {
@@ -66,6 +67,31 @@ var _ = Describe("SenderFactory", func() {
 			Expect(senders).To(HaveLen(2))
 		})
 	})
+
+	Context("A command with a Loop property", func() {
+		BeforeEach(func() {
+			config.UaaCommands = append(config.UaaCommands,
+				UaaCommand{
+					Cmd: "GetMe",
+					Loop: 2,
+				},
+				UaaCommand{
+					Cmd: "ListAllUsers",
+					Loop: 2,
+				},
+			)
+
+		})
+
+		It("should create a new sender that will Loop", func() {
+			senders, _, err := NewSenders(config)
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(senders[0]).To(BeAssignableToTypeOf(sender.TrafficSenderFunc(func(api *uaa.API) {})))
+			Expect(senders[1]).To(BeAssignableToTypeOf(sender.TrafficSenderFunc(func(api *uaa.API) {})))
+		})
+	})
+
 
 	Context("Given an invalid target url", func() {
 		BeforeEach(func() {

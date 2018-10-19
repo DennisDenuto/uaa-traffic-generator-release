@@ -15,12 +15,19 @@ func NewSenders(config TrafficConfig) ([]sender.TrafficSender, *uaa.API, error) 
 	for _, cmd := range config.UaaCommands {
 		switch cmd.Cmd {
 		case GetMeCmd:
-			senders = append(senders, sender.GetMeSender{})
+				senders = append(senders, buildTrafficSender(cmd.Loop, sender.GetMeSender{}))
 		case ListAllUsersCmd:
-			senders = append(senders, sender.ListAllUsersSender{})
+			senders = append(senders, buildTrafficSender(cmd.Loop, sender.ListAllUsersSender{}))
 		}
 
 	}
 
 	return senders, api, nil
+}
+
+func buildTrafficSender(loop int, trafficSender sender.TrafficSender) sender.TrafficSender {
+	if loop > 0 {
+		return sender.Loop(loop, trafficSender)
+	}
+	return trafficSender
 }

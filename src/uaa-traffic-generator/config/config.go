@@ -11,7 +11,8 @@ type TrafficConfig struct {
 }
 
 type UaaCommand struct {
-	Cmd string
+	Cmd  string
+	Loop int
 }
 
 type Credentials struct {
