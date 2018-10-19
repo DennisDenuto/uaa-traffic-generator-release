@@ -1,6 +1,9 @@
 package config
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"log"
+)
 
 const GetMeCmd = "GetMe"
 const ListAllUsersCmd = "ListAllUsers"
@@ -30,7 +33,7 @@ func NewConfig(jsonContents []byte) TrafficConfig {
 	var trafficConfig TrafficConfig
 	err := json.Unmarshal(jsonContents, &trafficConfig)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	return trafficConfig

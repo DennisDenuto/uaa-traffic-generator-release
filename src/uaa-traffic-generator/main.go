@@ -5,6 +5,7 @@ import (
 	"uaa-traffic-generator/config"
 	"io/ioutil"
 	"uaa-traffic-generator/runner"
+	"log"
 )
 
 func main() {
@@ -13,13 +14,14 @@ func main() {
 
 	configJsonContent, err := ioutil.ReadFile(*configPath)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
+
 	trafficConfig := config.NewConfig(configJsonContent)
 
 	senders, api, err := config.NewSenders(trafficConfig)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	runner.RunAll(api, senders)
 }
