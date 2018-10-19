@@ -31,7 +31,7 @@ var _ = Describe("ListAllUsersSender", func() {
 		fakeUaaServer.Close()
 	})
 
-	FContext("Send ListAllUsers Traffic", func() {
+	Context("Send ListAllUsers Traffic", func() {
 		BeforeEach(func() {
 			fakeUaaServer.AppendHandlers(
 				ghttp.CombineHandlers(
