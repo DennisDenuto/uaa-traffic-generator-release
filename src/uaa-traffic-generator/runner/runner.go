@@ -1,9 +1,9 @@
 package runner
 
 import (
-	"uaa-traffic-generator/sender"
 	"github.com/cloudfoundry-community/go-uaa"
 	"sync"
+	"uaa-traffic-generator/sender"
 )
 
 func RunAll(api *uaa.API, senders []sender.TrafficSender) {

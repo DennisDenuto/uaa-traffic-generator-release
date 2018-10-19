@@ -6,7 +6,6 @@ import (
 )
 
 type GetMeSender struct {
-
 }
 
 func (GetMeSender) Send(api *uaa.API) {

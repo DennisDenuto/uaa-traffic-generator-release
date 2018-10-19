@@ -1,16 +1,16 @@
 package main_test
 
 import (
+	"encoding/json"
+	"github.com/cloudfoundry-community/go-uaa"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/gexec"
-	"uaa-traffic-generator/config"
 	"github.com/onsi/gomega/ghttp"
-	"os/exec"
 	"io/ioutil"
 	"os"
-	"encoding/json"
-	"github.com/cloudfoundry-community/go-uaa"
+	"os/exec"
+	"uaa-traffic-generator/config"
 )
 
 var _ = Describe("Main", func() {

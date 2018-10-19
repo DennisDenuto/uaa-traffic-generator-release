@@ -3,10 +3,10 @@ package sender_test
 import (
 	. "uaa-traffic-generator/sender"
 
+	"github.com/cloudfoundry-community/go-uaa"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
-	"github.com/cloudfoundry-community/go-uaa"
 )
 
 var _ = Describe("GetMeSender", func() {

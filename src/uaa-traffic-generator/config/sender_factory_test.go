@@ -3,11 +3,11 @@ package config_test
 import (
 	. "uaa-traffic-generator/config"
 
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-	"github.com/onsi/ginkgo/extensions/table"
-	"uaa-traffic-generator/sender"
 	"github.com/cloudfoundry-community/go-uaa"
+	. "github.com/onsi/ginkgo"
+	"github.com/onsi/ginkgo/extensions/table"
+	. "github.com/onsi/gomega"
+	"uaa-traffic-generator/sender"
 )
 
 var _ = Describe("SenderFactory", func() {
@@ -72,11 +72,11 @@ var _ = Describe("SenderFactory", func() {
 		BeforeEach(func() {
 			config.UaaCommands = append(config.UaaCommands,
 				UaaCommand{
-					Cmd: "GetMe",
+					Cmd:  "GetMe",
 					Loop: 2,
 				},
 				UaaCommand{
-					Cmd: "ListAllUsers",
+					Cmd:  "ListAllUsers",
 					Loop: 2,
 				},
 			)
@@ -91,7 +91,6 @@ var _ = Describe("SenderFactory", func() {
 			Expect(senders[1]).To(BeAssignableToTypeOf(sender.TrafficSenderFunc(func(api *uaa.API) {})))
 		})
 	})
-
 
 	Context("Given an invalid target url", func() {
 		BeforeEach(func() {

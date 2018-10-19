@@ -1,12 +1,12 @@
 package runner_test
 
 import (
+	"github.com/cloudfoundry-community/go-uaa"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	. "uaa-traffic-generator/runner"
 	"uaa-traffic-generator/sender"
 	"uaa-traffic-generator/sender/senderfakes"
-	. "uaa-traffic-generator/runner"
-	"github.com/cloudfoundry-community/go-uaa"
 )
 
 var _ = Describe("Runner", func() {

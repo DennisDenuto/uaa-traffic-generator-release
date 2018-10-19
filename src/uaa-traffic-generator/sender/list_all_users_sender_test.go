@@ -3,10 +3,10 @@ package sender_test
 import (
 	. "uaa-traffic-generator/sender"
 
+	"github.com/cloudfoundry-community/go-uaa"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/ghttp"
-	"github.com/cloudfoundry-community/go-uaa"
 	"golang.org/x/oauth2"
 )
 
@@ -52,9 +52,8 @@ var _ = Describe("ListAllUsersSender", func() {
 	})
 })
 
-
 type paginatedUserList struct {
 	uaa.Page
-	Resources []uaa.User   `json:"resources"`
-	Schemas   []string `json:"schemas"`
+	Resources []uaa.User `json:"resources"`
+	Schemas   []string   `json:"schemas"`
 }

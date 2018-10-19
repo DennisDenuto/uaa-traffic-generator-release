@@ -1,8 +1,8 @@
 package config
 
 import (
-	"uaa-traffic-generator/sender"
 	"github.com/cloudfoundry-community/go-uaa"
+	"uaa-traffic-generator/sender"
 )
 
 func NewSenders(config TrafficConfig) ([]sender.TrafficSender, *uaa.API, error) {
@@ -15,7 +15,7 @@ func NewSenders(config TrafficConfig) ([]sender.TrafficSender, *uaa.API, error) 
 	for _, cmd := range config.UaaCommands {
 		switch cmd.Cmd {
 		case GetMeCmd:
-				senders = append(senders, buildTrafficSender(cmd.Loop, sender.GetMeSender{}))
+			senders = append(senders, buildTrafficSender(cmd.Loop, sender.GetMeSender{}))
 		case ListAllUsersCmd:
 			senders = append(senders, buildTrafficSender(cmd.Loop, sender.ListAllUsersSender{}))
 		}

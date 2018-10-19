@@ -5,7 +5,7 @@ import (
 	"log"
 )
 
-type ListAllUsersSender struct {}
+type ListAllUsersSender struct{}
 
 func (ListAllUsersSender) Send(api *uaa.API) {
 	users, err := api.ListAllUsers("", "", "", uaa.SortAscending)
@@ -17,4 +17,3 @@ func (ListAllUsersSender) Send(api *uaa.API) {
 		log.Printf("ListAllUsersSender returned users: %v", user)
 	}
 }
-

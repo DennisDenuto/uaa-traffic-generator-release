@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/golang/go/src/pkg/flag"
-	"uaa-traffic-generator/config"
 	"io/ioutil"
-	"uaa-traffic-generator/runner"
 	"log"
+	"uaa-traffic-generator/config"
+	"uaa-traffic-generator/runner"
 )
 
 func main() {
