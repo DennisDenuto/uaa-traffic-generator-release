@@ -1,0 +1,21 @@
+name: uaa-traffic-generator
+version: "1"
+commit_hash: b393607
+uncommitted_changes: false
+jobs:
+- name: traffic-generator
+  version: 89cefc56deeb0507129e3f2aabae58dde142f218
+  fingerprint: 89cefc56deeb0507129e3f2aabae58dde142f218
+  sha1: 3bda1bb5be1b8190e052385c7d5a372682e65484
+packages:
+- name: golang-1.10-linux
+  version: 40b001e4808f735478f5918d82f7b92f7907917a4baffce322b41484a2e0f948
+  fingerprint: 40b001e4808f735478f5918d82f7b92f7907917a4baffce322b41484a2e0f948
+  sha1: sha256:4fb2f8c49d86ebdb19d982a26ce94ca633a7382d971d14f5c5949765a394b036
+  dependencies: []
+- name: uaa-traffic-generator
+  version: b9dfabbc65451343abd39cafc876451fd9536df0
+  fingerprint: b9dfabbc65451343abd39cafc876451fd9536df0
+  sha1: bcf32a08788e6df6c00e1651b3f12aa1aade7bb2
+  dependencies:
+  - golang-1.10-linux
