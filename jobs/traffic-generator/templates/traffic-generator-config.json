@@ -1,0 +1,21 @@
+{
+  "UaaCommands": [
+    {
+      "Cmd": "GetMe",
+      "Loop": 2147483647
+    },
+    {
+      "Cmd": "ListAllUsers",
+      "Loop": 2147483647
+    }
+  ],
+  "Credentials": {
+    "Target": "https://uaa.service.uaa.internal:8443",
+    "GrantType": "password",
+    "ClientId": "admin",
+    "ClientSecret": "adminsecret",
+    "Username": "admin",
+    "UserPassword": "PASSWORD"
+  }
+}
+

@@ -1,0 +1,7 @@
+# jobs/uaa-traffic-generator/templates/bpm.yml.erb
+processes:
+  - name: traffic-generator
+    executable: /var/vcap/packages/uaa-traffic-generator/bin/uaa-traffic-generator
+    args:
+    - --config
+    - /var/vcap/jobs/traffic-generator/config/traffic-generator-config.conf

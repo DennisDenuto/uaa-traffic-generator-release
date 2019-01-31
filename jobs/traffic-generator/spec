@@ -1,10 +1,16 @@
 ---
 name: traffic-generator
 
-templates: {}
+templates:
+  bpm.yml.erb: config/bpm.yml
+  traffic-generator-config.json: config/traffic-generator-config.conf
+  traffic-generator: bin/traffic-generator
 
 packages:
   - uaa-traffic-generator
 
+consumes:
+  - name: uaa_db
+    type: uaa_db
 
 properties: {}

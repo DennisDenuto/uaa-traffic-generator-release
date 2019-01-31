@@ -2,15 +2,16 @@ package main_test
 
 import (
 	"encoding/json"
+	"io/ioutil"
+	"os"
+	"os/exec"
+	"uaa-traffic-generator/config"
+
 	"github.com/cloudfoundry-community/go-uaa"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/gexec"
 	"github.com/onsi/gomega/ghttp"
-	"io/ioutil"
-	"os"
-	"os/exec"
-	"uaa-traffic-generator/config"
 )
 
 var _ = Describe("Main", func() {
@@ -64,6 +65,9 @@ func generateTrafficConfigFile(fakeUaaServerUrl string) string {
 	tempFile, err := ioutil.TempFile(os.TempDir(), "trafficconfig")
 	Expect(err).NotTo(HaveOccurred())
 	trafficConfigJson, err := json.Marshal(trafficConfig)
+
+	println(string(trafficConfigJson))
+
 	Expect(err).NotTo(HaveOccurred())
 	err = ioutil.WriteFile(tempFile.Name(), trafficConfigJson, os.ModePerm)
 	Expect(err).NotTo(HaveOccurred())

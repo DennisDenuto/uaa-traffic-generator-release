@@ -1,0 +1,6 @@
+# jobs/traffic-generator/monit
+check process traffic-generator
+  with pidfile /var/vcap/sys/run/bpm/traffic-generator/traffic-generator.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start traffic-generator"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop traffic-generator"
+  group vcap
