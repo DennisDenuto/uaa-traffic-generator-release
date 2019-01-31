@@ -1,0 +1,6 @@
+check process uaa-traffic-generator
+  with pidfile /var/vcap/sys/run/bpm/uaa_traffic_generator/uaa_traffic_generator.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start uaa_traffic_generator_ctl"
+   with timeout 30 seconds
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop uaa_traffic_generator_ctl"
+  group vcap

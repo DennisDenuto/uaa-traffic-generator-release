@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/var/vcap/packages/uaa_traffic_generator/bin/uaa_traffic_generator "$@"

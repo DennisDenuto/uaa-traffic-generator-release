@@ -1,1 +1,5 @@
 name: uaa-traffic-generator
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /Users/pivotal/workspace/uaa-traffic-generator-release/local-blobstore

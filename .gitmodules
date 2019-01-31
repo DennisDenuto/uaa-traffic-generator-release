@@ -1,0 +1,3 @@
+[submodule "golang-release"]
+	path = golang-release
+	url = https://github.com/bosh-packages/golang-release

@@ -1,0 +1,10 @@
+---
+name: traffic-generator
+
+templates: {}
+
+packages:
+  - uaa-traffic-generator
+
+
+properties: {}
